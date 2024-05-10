@@ -5,8 +5,7 @@ const translation = {
         login: 'Login',
       },
     },
-    app: {
-      name: 'Bedrock Claude Chat',
+    app: {Kinfra TR Chatbot',
       inputMessage: 'Inviare un messaggio',
       starredBots: 'Bot preferiti',
       recentlyUsedBots: 'Bot utilizzati di recente',

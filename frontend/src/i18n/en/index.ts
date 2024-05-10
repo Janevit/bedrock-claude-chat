@@ -6,7 +6,7 @@ const translation = {
       },
     },
     app: {
-      name: 'Kinfra TR Chatbot',
+      name: 'KInfra TR Chatbot',
       inputMessage: 'Send a message',
       starredBots: 'Starred Bots',
       recentlyUsedBots: 'Recently Used Bots',

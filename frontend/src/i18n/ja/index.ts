@@ -9,7 +9,7 @@ const translation = {
       },
     },
     app: {
-      name: 'Kinfra TR Chatbot',
+      name: 'KInfra TR Chatbot',
       inputMessage: '入力してください',
       starredBots: 'スター付きのボット',
       recentlyUsedBots: '最近使用したボット',

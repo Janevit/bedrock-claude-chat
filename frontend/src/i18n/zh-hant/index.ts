@@ -4,7 +4,7 @@
   const translation = {
     translation: {
       app: {
-        name: 'KInfra TR Chatbot',
+        name: 'KInfra Technology Research AI',
         inputMessage: '請輸入訊息',
         starredBots: '我的最愛 Bots',
         recentlyUsedBots: '最近用過的 Bots',

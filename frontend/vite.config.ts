@@ -14,7 +14,7 @@ export default defineConfig({
       },
       injectRegister: 'auto',
       manifest: {
-        name: 'KInfra TR Chatbot',
+        name: 'KInfra Technology Research AI',
         short_name: 'TR Chat',
         description: 'AWS-native chatbot using Bedrock + Claude',
         start_url: '/index.html',

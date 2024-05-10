@@ -4,7 +4,7 @@
 const translation = {
   translation: {
     app: {
-      name: 'KInfra TR Chatbot',
+      name: 'KInfra Technology Research AI',
       inputMessage: '입력해 주십시오',
     },
     deleteDialog: {

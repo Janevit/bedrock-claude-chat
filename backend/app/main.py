@@ -40,10 +40,10 @@ if not is_published_api:
         {"name": "api_publication", "description": "API Publication API"},
         {"name": "admin", "description": "Admin API"},
     ]
-    title = "Kinfra TR Chatbot"
+    title = "Bedrock Claude Chat"
 else:
     openapi_tags = [{"name": "published_api", "description": "Published API"}]
-    title = "Kinfra TR Chatbot Published API"
+    title = "Bedrock Claude Chat Published API"
 
 
 app = FastAPI(

@@ -4,7 +4,7 @@
 const translation = {
   translation: {
     app: {
-      name: 'KInfra Technology Research AI Platform \n How can I help you today?',
+      name: 'KInfra Technology Research AI Platform',
       inputMessage: '입력해 주십시오',
     },
     deleteDialog: {

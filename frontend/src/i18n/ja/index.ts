@@ -9,7 +9,7 @@ const translation = {
       },
     },
     app: {
-      name: 'KInfra Technology Research AI',
+      name: 'How can I help you today?',
       inputMessage: '入力してください',
       starredBots: 'スター付きのボット',
       recentlyUsedBots: '最近使用したボット',

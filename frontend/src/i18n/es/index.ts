@@ -6,7 +6,7 @@ const translation = {
       },
     },
     app: {
-      name: 'KInfra Technology Research AI',
+      name: 'How can I help you today?',
       inputMessage: 'Enviar un mensaje',
       starredBots: 'Bots Favoritos',
       recentlyUsedBots: 'Bots Usados Recientemente',

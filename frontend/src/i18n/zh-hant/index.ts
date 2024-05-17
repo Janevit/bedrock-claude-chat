@@ -4,7 +4,7 @@
   const translation = {
     translation: {
       app: {
-        name: 'How can I help you today?',
+        name: 'KInfra Technology Research AI Platform \n How can I help you today?',
         inputMessage: '請輸入訊息',
         starredBots: '我的最愛 Bots',
         recentlyUsedBots: '最近用過的 Bots',

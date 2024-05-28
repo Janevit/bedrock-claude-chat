@@ -73,7 +73,7 @@
         "secretName": "kinfra-azuread-dev"
       }
     ],
-    "userPoolDomainPrefix": "AuthUserPool8115E87F-OwdN8dt6rhgn",
+    "userPoolDomainPrefix": "AuthUserPool-kinfra-azuread-dev",
     "allowedSignUpEmailDomains": ["kbtg.tech", "kasikornbank.com"],
     "publishedApiAllowedIpV4AddressRanges": [
       "0.0.0.0/1",

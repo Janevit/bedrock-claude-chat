@@ -66,14 +66,8 @@
       "0000:0000:0000:0000:0000:0000:0000:0000/1",
       "8000:0000:0000:0000:0000:0000:0000:0000/1"
     ],
-    "identityProviders": [  
-      {
-        "service": "oidc",
-        "serviceName": "kinfra-tr-chatbot-dev",
-        "secretName": "kinfra-azuread-dev"
-      }
-    ],
-    "userPoolDomainPrefix": "kinfra-tr-chatbot-dev",
+    "identityProviders": [],
+    "userPoolDomainPrefix": "",
     "allowedSignUpEmailDomains": ["kbtg.tech", "kasikornbank.com", "kasikornbanktest.onmicrosoft.com"],
     "publishedApiAllowedIpV4AddressRanges": [
       "0.0.0.0/1",

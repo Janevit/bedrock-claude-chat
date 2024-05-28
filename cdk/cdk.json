@@ -66,15 +66,15 @@
       "0000:0000:0000:0000:0000:0000:0000:0000/1",
       "8000:0000:0000:0000:0000:0000:0000:0000/1"
     ],
-    "identityProviders": [      
+    "identityProviders": [  
       {
-      "service": "oidc", // Do not change
-      "serviceName": "kinfra-azuread-dev", // Set any value you like
-      "secretName": "kinfra-azuread-dev"
+        "service": "oidc",
+        "serviceName": "kinfra-azuread-dev",
+        "secretName": "kinfra-azuread-dev"
       }
     ],
     "userPoolDomainPrefix": "AuthUserPool8115E87F-OwdN8dt6rhgn",
-    "allowedSignUpEmailDomains": ["kbtg.tech"],
+    "allowedSignUpEmailDomains": ["kbtg.tech", "kasikornbank.com"],
     "publishedApiAllowedIpV4AddressRanges": [
       "0.0.0.0/1",
       "128.0.0.0/1"

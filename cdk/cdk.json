@@ -69,11 +69,11 @@
     "identityProviders": [  
       {
         "service": "oidc",
-        "serviceName": "kinfra-azuread-dev",
+        "serviceName": "kinfra-tr-chatbot-dev",
         "secretName": "kinfra-azuread-dev"
       }
     ],
-    "userPoolDomainPrefix": "kinfra-azure-dev",
+    "userPoolDomainPrefix": "kinfra-tr-chatbot-dev",
     "allowedSignUpEmailDomains": ["kbtg.tech", "kasikornbank.com"],
     "publishedApiAllowedIpV4AddressRanges": [
       "0.0.0.0/1",

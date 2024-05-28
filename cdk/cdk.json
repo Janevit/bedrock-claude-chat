@@ -66,8 +66,14 @@
       "0000:0000:0000:0000:0000:0000:0000:0000/1",
       "8000:0000:0000:0000:0000:0000:0000:0000/1"
     ],
-    "identityProviders": [],
-    "userPoolDomainPrefix": "",
+    "identityProviders": [      
+      {
+      "service": "oidc", // Do not change
+      "serviceName": "kinfra-azuread-dev", // Set any value you like
+      "secretName": "kinfra-azuread-dev"
+      }
+    ],
+    "userPoolDomainPrefix": "AuthUserPool8115E87F-OwdN8dt6rhgn",
     "allowedSignUpEmailDomains": ["kbtg.tech"],
     "publishedApiAllowedIpV4AddressRanges": [
       "0.0.0.0/1",

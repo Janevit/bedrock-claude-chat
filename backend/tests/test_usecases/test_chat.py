@@ -258,7 +258,7 @@ class TestMultimodalChat(unittest.TestCase):
                         media_type="image/png",
                     ),
                 ],
-                model="claude-v3-sonnet",  # Specify v3 model
+                model="claude-v3-5-sonnet",  # Specify v3 model
                 parent_message_id=None,
                 message_id=None,
             ),

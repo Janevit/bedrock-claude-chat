@@ -74,7 +74,7 @@
       }
     ],
     "userPoolDomainPrefix": "kinfra-tr-chatbot-dev",
-    "allowedSignUpEmailDomains": ["kasikornbanktest.onmicrosoft.com", "kbtg.tech"],
+    "allowedSignUpEmailDomains": ["kasikornbanktest.onmicrosoft.com", "kbtg.tech", "kbtgvn.tech", "kasikornbank.com"],
     "publishedApiAllowedIpV4AddressRanges": [
       "0.0.0.0/1",
       "128.0.0.0/1"

@@ -1,5 +1,5 @@
 import { Construct } from "constructs";
-import { ArnFormat, CfnOutput, Duration } from "aws-cdk-lib";
+import { CfnOutput, Duration } from "aws-cdk-lib";
 import { ITable } from "aws-cdk-lib/aws-dynamodb";
 import { HttpLambdaIntegration } from "aws-cdk-lib/aws-apigatewayv2-integrations";
 import { HttpUserPoolAuthorizer } from "aws-cdk-lib/aws-apigatewayv2-authorizers";
@@ -19,14 +19,16 @@ import { Stack } from "aws-cdk-lib";
 import * as iam from "aws-cdk-lib/aws-iam";
 import * as ec2 from "aws-cdk-lib/aws-ec2";
 import * as path from "path";
-import { DbConfig } from "./embedding";
 import { IBucket } from "aws-cdk-lib/aws-s3";
+import { ISecret } from "aws-cdk-lib/aws-secretsmanager";
 import * as codebuild from "aws-cdk-lib/aws-codebuild";
 import { UsageAnalysis } from "./usage-analysis";
+import { excludeDockerImage } from "../constants/docker";
+
 export interface ApiProps {
   readonly vpc: ec2.IVpc;
   readonly database: ITable;
-  readonly dbConfig: DbConfig;
+  readonly dbSecrets: ISecret;
   readonly corsAllowOrigins?: string[];
   readonly auth: Auth;
   readonly bedrockRegion: string;
@@ -34,7 +36,9 @@ export interface ApiProps {
   readonly documentBucket: IBucket;
   readonly largeMessageBucket: IBucket;
   readonly apiPublishProject: codebuild.IProject;
+  readonly bedrockKnowledgeBaseProject: codebuild.IProject;
   readonly usageAnalysis?: UsageAnalysis;
+  readonly enableMistral: boolean;
 }
 
 export class Api extends Construct {
@@ -77,7 +81,10 @@ export class Api extends Construct {
       new iam.PolicyStatement({
         effect: iam.Effect.ALLOW,
         actions: ["codebuild:StartBuild"],
-        resources: [props.apiPublishProject.projectArn],
+        resources: [
+          props.apiPublishProject.projectArn,
+          props.bedrockKnowledgeBaseProject.projectArn,
+        ],
       })
     );
     handlerRole.addToPolicy(
@@ -97,7 +104,10 @@ export class Api extends Construct {
       new iam.PolicyStatement({
         effect: iam.Effect.ALLOW,
         actions: ["codebuild:BatchGetBuilds"],
-        resources: [props.apiPublishProject.projectArn],
+        resources: [
+          props.apiPublishProject.projectArn,
+          props.bedrockKnowledgeBaseProject.projectArn,
+        ],
       })
     );
     handlerRole.addToPolicy(
@@ -170,6 +180,9 @@ export class Api extends Construct {
         {
           platform: Platform.LINUX_AMD64,
           file: "Dockerfile",
+          exclude: [
+            ...excludeDockerImage
+          ]
         }
       ),
       vpc: props.vpc,
@@ -185,23 +198,23 @@ export class Api extends Construct {
         REGION: Stack.of(this).region,
         BEDROCK_REGION: props.bedrockRegion,
         TABLE_ACCESS_ROLE_ARN: tableAccessRole.roleArn,
-        DB_NAME: props.dbConfig.database,
-        DB_HOST: props.dbConfig.host,
-        DB_USER: props.dbConfig.username,
-        DB_PASSWORD: props.dbConfig.password,
-        DB_PORT: props.dbConfig.port.toString(),
+        DB_SECRETS_ARN: props.dbSecrets.secretArn,
         DOCUMENT_BUCKET: props.documentBucket.bucketName,
         LARGE_MESSAGE_BUCKET: props.largeMessageBucket.bucketName,
         PUBLISH_API_CODEBUILD_PROJECT_NAME: props.apiPublishProject.projectName,
+        KNOWLEDGE_BASE_CODEBUILD_PROJECT_NAME:
+          props.bedrockKnowledgeBaseProject.projectName,
         USAGE_ANALYSIS_DATABASE:
           props.usageAnalysis?.database.databaseName || "",
         USAGE_ANALYSIS_TABLE:
           props.usageAnalysis?.ddbExportTable.tableName || "",
         USAGE_ANALYSIS_WORKGROUP: props.usageAnalysis?.workgroupName || "",
         USAGE_ANALYSIS_OUTPUT_LOCATION: usageAnalysisOutputLocation,
+        ENABLE_MISTRAL: props.enableMistral.toString(),
       },
       role: handlerRole,
     });
+    props.dbSecrets.grantRead(handler);
 
     const api = new HttpApi(this, "Default", {
       corsPreflight: {

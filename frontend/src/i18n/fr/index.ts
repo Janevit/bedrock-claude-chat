@@ -1,7 +1,8 @@
 const translation = {
   translation: {
     app: {
-      name: 'KInfra Technology Research AI Platform',
+      name: 'Bedrock Claude Chat',
+      nameWithoutClaude: 'Bedrock Chat',
       inputMessage: 'Envoyer un message',
       starredBots: 'Epingler un bot',
       recentlyUsedBots: 'Bot utilisé récemment',
@@ -171,6 +172,7 @@ Comment catégoriseriez-vous cet e-mail ?`,
       signOut: 'Se déconnecter',
       close: 'Fermer',
       add: 'Ajouter',
+      continue: 'Continuer à générer',
     },
     input: {
       hint: {

@@ -6,7 +6,7 @@ const translation = {
       },
     },
     app: {
-      name: 'KInfra Technology Research AI Platform',
+      name: 'Bedrock Claude Chat',
       inputMessage: 'Inviare un messaggio',
       starredBots: 'Bot preferiti',
       recentlyUsedBots: 'Bot utilizzati di recente',
@@ -332,6 +332,7 @@ Come classificheresti questa email?`,
       signOut: 'Disconnessione',
       close: 'Chiudi',
       add: 'Aggiungi',
+      continue: 'Continuare a generare',
     },
     input: {
       hint: {

@@ -17,11 +17,18 @@ export type BotKnowledge = {
   // Sitemap cannot be used yet.
   sitemapUrls: string[];
   filenames: string[];
+  s3Urls: string[];
 };
 
-export type EmdeddingPrams = {
+export type ConversationQuickStarter = {
+  title: string;
+  example: string;
+};
+
+export type EmdeddingParams = {
   chunkSize: number;
   chunkOverlap: number;
+  enablePartitionPdf: boolean;
 };
 
 export type BotKnowledgeDiff = {
@@ -31,6 +38,7 @@ export type BotKnowledgeDiff = {
   addedFilenames: string[];
   deletedFilenames: string[];
   unchangedFilenames: string[];
+  s3Urls: string[];
 };
 
 export type BotSyncStatus = 'QUEUED' | 'RUNNING' | 'SUCCEEDED' | 'FAILED';
@@ -39,15 +47,34 @@ export type BotListItem = BotMeta & {
   available: boolean;
 };
 
+export type GenerationParams = {
+  maxTokens: number;
+  topK: number;
+  topP: number;
+  temperature: number;
+  stopSequences: string[];
+};
+
+export type SearchParams = {
+  maxResults: number;
+};
+
 export type BotDetails = BotMeta & {
   instruction: string;
-  embeddingParams: EmdeddingPrams;
+  embeddingParams: EmdeddingParams;
+  generationParams: GenerationParams;
+  searchParams: SearchParams;
+  agent: Agent;
   knowledge: BotKnowledge;
   syncStatusReason: string;
+  displayRetrievedChunks: boolean;
+  conversationQuickStarters: ConversationQuickStarter[];
 };
 
 export type BotSummary = BotMeta & {
   hasKnowledge: boolean;
+  hasAgent: boolean;
+  conversationQuickStarters: ConversationQuickStarter[];
 };
 
 export type BotFile = {
@@ -61,9 +88,14 @@ export type RegisterBotRequest = {
   id: string;
   title: string;
   instruction: string;
+  agent: AgentInput;
   description?: string;
-  embeddingParams?: EmdeddingPrams;
+  embeddingParams?: EmdeddingParams;
+  generationParams?: GenerationParams;
+  searchParams?: SearchParams;
   knowledge?: BotKnowledge;
+  displayRetrievedChunks: boolean;
+  conversationQuickStarters: ConversationQuickStarter[];
 };
 
 export type RegisterBotResponse = BotDetails;
@@ -72,8 +104,13 @@ export type UpdateBotRequest = {
   title: string;
   instruction: string;
   description?: string;
-  embeddingParams?: EmdeddingPrams;
+  agent: AgentInput;
+  embeddingParams?: EmdeddingParams;
+  generationParams?: BotGenerationConfig;
+  searchParams?: SearchParams;
   knowledge?: BotKnowledgeDiff;
+  displayRetrievedChunks: boolean;
+  conversationQuickStarters: ConversationQuickStarter[];
 };
 
 export type UpdateBotResponse = {
@@ -81,8 +118,12 @@ export type UpdateBotResponse = {
   title: string;
   instruction: string;
   description: string;
-  embeddingParams?: EmdeddingPrams;
+  embeddingParams: EmdeddingParams;
+  generationParams: GenerationParams;
+  searchParams: SearchParams;
   knowledge?: BotKnowledge;
+  displayRetrievedChunks: boolean;
+  conversationQuickStarters: ConversationQuickStarter[];
 };
 
 export type UpdateBotPinnedRequest = {

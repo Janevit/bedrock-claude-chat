@@ -25,11 +25,12 @@ import Help from '../components/Help';
 import StatusSyncBot from '../components/StatusSyncBot';
 import useUser from '../hooks/useUser';
 import ListItemBot from '../components/ListItemBot';
+import { TooltipDirection } from '../constants';
 
 const BotExplorePage: React.FC = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { isAllowApiSettings } = useUser();
+  const { isAllowCreatingBot, isAllowApiSettings } = useUser();
 
   const [isOpenDeleteDialog, setIsOpenDeleteDialog] = useState(false);
   const [isOpenShareDialog, setIsOpenShareDialog] = useState(false);
@@ -132,11 +133,15 @@ const BotExplorePage: React.FC = () => {
             <div className="flex items-end justify-between">
               <div className="flex items-center gap-2">
                 <div className="text-xl font-bold">{t('bot.label.myBots')}</div>
-                <Help direction="right" message={t('bot.help.overview')} />
+                <Help
+                  direction={TooltipDirection.RIGHT}
+                  message={t('bot.help.overview')}
+                />
               </div>
 
               <Button
                 className=" text-sm"
+                disabled={!isAllowCreatingBot}
                 outlined
                 icon={<PiPlus />}
                 onClick={onClickNewBot}>
@@ -147,7 +152,7 @@ const BotExplorePage: React.FC = () => {
 
             <div className="h-4/5 overflow-x-hidden overflow-y-scroll border-b border-gray pr-1 scrollbar-thin scrollbar-thumb-aws-font-color/20 ">
               {myBots?.length === 0 && (
-                <div className="flex h-full w-full items-center justify-center italic text-dark-gray">
+                <div className="flex size-full items-center justify-center italic text-dark-gray">
                   {t('bot.label.noBots')}
                 </div>
               )}
@@ -255,7 +260,7 @@ const BotExplorePage: React.FC = () => {
             <div className="mt-2 border-b border-gray"></div>
             <div className="h-4/5 overflow-y-scroll border-b border-gray  pr-1 scrollbar-thin scrollbar-thumb-aws-font-color/20">
               {recentlyUsedSharedBots?.length === 0 && (
-                <div className="flex h-full w-full items-center justify-center italic text-dark-gray">
+                <div className="flex size-full items-center justify-center italic text-dark-gray">
                   {t('bot.label.noBotsRecentlyUsed')}
                 </div>
               )}

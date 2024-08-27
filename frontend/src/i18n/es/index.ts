@@ -6,7 +6,8 @@ const translation = {
       },
     },
     app: {
-      name: 'KInfra Technology Research AI Platform',
+      name: 'Bedrock Claude Chat',
+      nameWithoutClaude: 'Bedrock Chat',
       inputMessage: 'Enviar un mensaje',
       starredBots: 'Bots Favoritos',
       recentlyUsedBots: 'Bots Usados Recientemente',
@@ -308,6 +309,7 @@ Las categorías de clasificación son:
       signOut: 'Cerrar sesión',
       close: 'Cerrar',
       add: 'Agregar',
+      continue: 'Seguir generando',
     },
     input: {
       hint: {

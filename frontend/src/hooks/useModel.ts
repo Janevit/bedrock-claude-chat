@@ -2,19 +2,24 @@ import { create } from 'zustand';
 import { Model } from '../@types/conversation';
 import { useMemo } from 'react';
 
-const ENABLE_MISTRAL: boolean = import.meta.env.VITE_APP_ENABLE_MISTRAL === 'true';
+const MISTRAL_ENABLED: boolean = import.meta.env.VITE_APP_ENABLE_MISTRAL === 'true';
 const availableModels: {
   modelId: Model;
   label: string;
   supportMediaType: string[];
-}[] = !ENABLE_MISTRAL ? [
+}[] = !MISTRAL_ENABLED ? [
   {
     modelId: 'claude-v3-haiku',
     label: 'Claude 3 (Haiku)',
     supportMediaType: ['image/jpeg', 'image/png', 'image/gif', 'image/webp'],
   },
   {
-    modelId: 'claude-v3-5-sonnet',
+    modelId: 'claude-v3-sonnet',
+    label: 'Claude 3 (Sonnet)',
+    supportMediaType: ['image/jpeg', 'image/png', 'image/gif', 'image/webp'],
+  },
+  {
+    modelId: 'claude-v3.5-sonnet',
     label: 'Claude 3.5 (Sonnet)',
     supportMediaType: ['image/jpeg', 'image/png', 'image/gif', 'image/webp'],
   },
@@ -36,7 +41,7 @@ const availableModels: {
     },
     {
       modelId: 'mistral-large',
-      label: 'Mixtral Large',
+      label: 'Mistral Large',
       supportMediaType: [],
     },
   ]
@@ -66,9 +71,10 @@ const useModel = () => {
     model,
     disabledImageUpload: (model?.supportMediaType.length ?? 0) === 0,
     acceptMediaType:
-      model?.supportMediaType.map(
-        (mediaType) => `.${mediaType.split('/')[1]}`
-      ) ?? [],
+      model?.supportMediaType.flatMap((mediaType) => {
+        const ext = mediaType.split('/')[1];
+        return ext === 'jpeg' ? ['.jpg', '.jpeg'] : [`.${ext}`];
+      }) ?? [],
     availableModels,
   };
 };

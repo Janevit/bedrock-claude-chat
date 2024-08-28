@@ -63,7 +63,7 @@ By using the [Agent functionality](./docs/AGENT.md), your chatbot can automatica
 
 ## 🚀 Super-easy Deployment
 
-- In the us-east-1 region, open [Bedrock Model access](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/modelaccess) > `Manage model access` > Check `Anthropic / Claude 3 Haiku`, `Anthropic / Claude 3 Sonnet`, `Anthropic / Claude 3.5 Sonnet` and `Cohere / Embed Multilingual` then `Save changes`.
+- In the us-west-2 region, open [Bedrock Model access](https://us-west-2.console.aws.amazon.com/bedrock/home?region=us-west-2#/modelaccess) > `Manage model access` > Check `Anthropic / Claude 3 Haiku`, `Anthropic / Claude 3 Sonnet`, `Anthropic / Claude 3.5 Sonnet` and `Cohere / Embed Multilingual` then `Save changes`.
 
 <details>
 <summary>Screenshot</summary>
@@ -93,7 +93,7 @@ You can specify the following parameters during deployment to enhance security a
 - **--ipv6-ranges**: Comma-separated list of allowed IPv6 ranges. (default: allow all ipv6 addresses)
 - **--disable-ipv6**: Disable connections over IPv6. (default: enabled)
 - **--allowed-signup-email-domains**: Comma-separated list of allowed email domains for sign-up. (default: no domain restriction)
-- **--bedrock-region**: Define the region where bedrock is available. (default: us-east-1)
+- **--bedrock-region**: Define the region where bedrock is available. (default: us-west-2)
 - **--version**: The version of Bedrock Claude Chat to deploy. (default: latest version in development)
 
 #### Example command with parameters:
@@ -164,10 +164,10 @@ npm ci
 npm i -g aws-cdk
 ```
 
-- Before deploying the CDK, you will need to work with Bootstrap once for the region you are deploying to. In this example, we will deploy to the us-east-1 region. Please replace your account id into `<account id>`.
+- Before deploying the CDK, you will need to work with Bootstrap once for the region you are deploying to. In this example, we will deploy to the us-west-2 region. Please replace your account id into `<account id>`.
 
 ```
-cdk bootstrap aws://<account id>/us-east-1
+cdk bootstrap aws://<account id>/us-west-2
 ```
 
 - If necessary, edit the following entries in [cdk.json](./cdk/cdk.json) if necessary.
@@ -225,7 +225,7 @@ DEFAULT_GENERATION_CONFIG = {
 
 ### Remove resources
 
-If using cli and CDK, please `cdk destroy`. If not, access [CloudFormation](https://console.aws.amazon.com/cloudformation/home) and then delete `BedrockChatStack` and `FrontendWafStack` manually. Please note that `FrontendWafStack` is in `us-east-1` region.
+If using cli and CDK, please `cdk destroy`. If not, access [CloudFormation](https://console.aws.amazon.com/cloudformation/home) and then delete `BedrockChatStack` and `FrontendWafStack` manually. Please note that `FrontendWafStack` is in `us-west-2` region.
 
 ### Stopping Vector DB for RAG
 

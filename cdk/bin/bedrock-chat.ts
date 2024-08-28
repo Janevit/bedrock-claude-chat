@@ -51,7 +51,7 @@ const EMBEDDING_CONTAINER_MEMORY: number = app.node.tryGetContext(
 const NATGATEWAY_COUNT: number = app.node.tryGetContext("natgatewayCount");
 
 // WAF for frontend
-// 2023/9: Currently, the WAF for CloudFront needs to be created in the North America region (us-west-2), so the stacks are separated
+// 2023/9: Currently, the WAF for CloudFront needs to be created in the North America region (us-east-1), so the stacks are separated
 // https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafv2-webacl.html
 const waf = new FrontendWafStack(app, `FrontendWafStack`, {
   env: {

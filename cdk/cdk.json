@@ -52,14 +52,20 @@
     "@aws-cdk/core:includePrefixInUniqueNameGeneration": true,
     "@aws-cdk/aws-opensearchservice:enableOpensearchMultiAzWithStandby": true,
     "enableMistral": false,
-    "bedrockRegion": "us-west-2",
+    "bedrockRegion": "us-east-1",
     "allowedIpV4AddressRanges": ["0.0.0.0/1", "128.0.0.0/1"],
     "allowedIpV6AddressRanges": [
       "0000:0000:0000:0000:0000:0000:0000:0000/1",
       "8000:0000:0000:0000:0000:0000:0000:0000/1"
     ],
-    "identityProviders": [],
-    "userPoolDomainPrefix": "",
+    "identityProviders": [
+      {
+        "service": "oidc",
+        "serviceName": "azure-ad-dev",
+        "secretName": "kinfra-azuread-dev"
+      }
+    ],
+    "userPoolDomainPrefix": "azure-ad-dev",
     "allowedSignUpEmailDomains": ["kasikornbanktest.onmicrosoft.com", "kbtg.tech", "kbtgvn.tech", "kasikornbank.com"],
     "autoJoinUserGroups": ["CreatingBotAllowed"],
     "selfSignUpEnabled": false,

@@ -71,7 +71,7 @@ BEDROCK_PRICING = {
         "mixtral-8x7b-instruct": {"input": 0.00045, "output": 0.0007},
         "mistral-large": {"input": 0.008, "output": 0.024},
     },
-    "us-west-2": {
+    "us-east-1": {
         "claude-instant-v1": {
             "input": 0.00080,
             "output": 0.00240,

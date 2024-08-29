@@ -61,11 +61,11 @@
     "identityProviders": [
       {
         "service": "oidc",
-        "serviceName": "azure-ad-dev",
+        "serviceName": "kinfra-azure-ad-dev",
         "secretName": "kinfra-azuread-dev"
       }
     ],
-    "userPoolDomainPrefix": "azure-ad-dev",
+    "userPoolDomainPrefix": "kinfra-azure-ad-dev",
     "allowedSignUpEmailDomains": ["kasikornbanktest.onmicrosoft.com", "kbtg.tech", "kbtgvn.tech", "kasikornbank.com"],
     "autoJoinUserGroups": ["CreatingBotAllowed"],
     "selfSignUpEnabled": false,

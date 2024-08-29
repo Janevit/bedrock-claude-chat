@@ -40,7 +40,7 @@ if not is_published_api:
         {"name": "api_publication", "description": "API Publication API"},
         {"name": "admin", "description": "Admin API"},
     ]
-    title = "KInfra AI Chat"
+    title = "KInfra AI Chatbot"
 else:
     openapi_tags = [{"name": "published_api", "description": "Published API"}]
     title = "KInfra AI Published API"

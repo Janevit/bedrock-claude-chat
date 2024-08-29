@@ -14,8 +14,8 @@ export default defineConfig({
       },
       injectRegister: 'auto',
       manifest: {
-        name: 'KInfra AI Chat',
-        short_name: 'KInfra AI Chat',
+        name: 'KInfra AI Chatbot',
+        short_name: 'KInfra AI Chatbot',
         description: 'AWS-native chatbot using Bedrock + Claude',
         start_url: '/index.html',
         display: 'standalone',

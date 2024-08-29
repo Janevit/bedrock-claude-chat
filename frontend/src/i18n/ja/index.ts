@@ -9,7 +9,7 @@ const translation = {
       },
     },
     app: {
-      name: 'KInfra AI Chat',
+      name: 'KInfra AI Chatbot',
       nameWithoutClaude: 'Bedrock Chat',
       inputMessage: '入力してください',
       starredBots: 'スター付きのボット',
